@@ -63,13 +63,7 @@ In depth installation here: <TODO>
 - sudo systemctl status libvirtd
 ```
 
-2. setups path exports for this shell
-```
-- export PATH=$PATH:/usr/lib/go/bin
-- export GOPATH=/usr/lib/go/
-```
-
-3. Setup permissions for libvirt
+2. Setup permissions for libvirt
 ```
 - sudo usermod -a -G libvirt,kvm terraform
 - sudo nano /etc/libvirt/qemu.conf
@@ -81,14 +75,18 @@ In depth installation here: <TODO>
 ```
 - Restart if you are on a virtual machine
 
-4. Install [terraform-libvirt-provider](https://github.com/dmacvicar/terraform-provider-libvirt#installing)
+3. Install [terraform-libvirt-provider](https://github.com/dmacvicar/terraform-provider-libvirt#installing)
 ```
+- sudo apt -y install git
+- sudo apt -y install libvirt-dev
+- export PATH=$PATH:/usr/lib/go/bin
+- export GOPATH=/usr/lib/go/
 - mkdir -p $GOPATH/src/github.com/dmacvicar/
 - cd $GOPATH/src/github.com/dmacvicar/
 - sudo apt install git
 - git clone https://github.com/dmacvicar/terraform-provider-libvirt.git
 - cd terraform-provider-libvirt
-- go install
+- sudo make install
 - ls $GOPATH/bin/
 ```
 

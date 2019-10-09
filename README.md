@@ -95,6 +95,8 @@ In depth installation here: <TODO>
 - sudo make install
 - cd $GOPATH/bin/
 - terraform-provider-libivrt -version
+- mkdir ~/.terraform.d/plugins
+- sudo ln -s /usr/lib/go/bin/terraform-provider-libvirt ~/.terraform.d/plugins/
 ```
 
 5. Test provider  <TODO>
@@ -161,7 +163,7 @@ In depth installation here: <TODO>
 ```
 ```
 
-4. install [terraform-provider-azurerm](https://github.com/terraform-providers/terraform-provider-azurerm)
+4. Install provider [terraform-provider-azurerm](https://github.com/terraform-providers/terraform-provider-azurerm)
 ```
 - export PATH=$PATH:/usr/lib/go/bin
 - export GOPATH=/usr/lib/go/
@@ -182,8 +184,8 @@ In depth installation here: <TODO>
 ##
 
 
-## others
-1. setup ssh key
+## Others
+1. Setup ssh key
 ```
 mkdir ~/.ssh
 chmod 700 ~/.ssh

@@ -70,7 +70,7 @@ In depth installation here: <TODO>
 - sudo nano /etc/libvirt/qemu.conf
 ```
 - search for security_driver="selinux", uncomment it and set to "none". (in nano you can search with ctrl 
-+ w)
++ w). Save and exit.
 ```
 - sudo systemctl restart libvirtd.service
 ```
@@ -94,12 +94,14 @@ In depth installation here: <TODO>
 ## docker and docker provider
 1. install official docker release for ubuntu 18.04 amd64 bionic (on other machines normal 'apt install docker.io' installation should work)
 ```
-- sudo apt-get update
-- sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+- sudo apt update
+- sudo apt install apt-transport-https ca-certificates curl software-properties-common
 - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
-- sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable"
-- sudo apt-get update
-- sudo apt-get install docker-ce
+- sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+- sudo apt update
+- apt-cache policy docker-ce
+- sudo apt install docker-ce
+- sudo systemctl status docker
 ```
 2. install go
 ```
@@ -123,6 +125,20 @@ In depth installation here: <TODO>
 - ls $GOPATH/bin/
 ```
 - You will see terraform-provider-docker executable
+
+5. setup docker permissions
+```
+- sudo usermod -aG docker ${USER}
+- su - ${USER}
+- id -nG
+```
+
+6. Restart if you are on a virtual machine
+
+7. test docker
+```
+- docker run hello-world
+```
 ##
 
 ## azure provider

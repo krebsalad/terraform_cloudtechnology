@@ -143,8 +143,31 @@ In depth installation here: <TODO>
 ##
 
 ## azure provider
-1. install [terraform azure provider](https://github.com/terraform-providers/terraform-provider-azurerm)
+1. Setup azure stuff <TODO>
+
+2. install go
+```
+- sudo apt install golang
+```
+
+3. setups path exports for this shell
+```
+- export PATH=$PATH:/usr/lib/go/bin
+- export GOPATH=/usr/lib/go/
+```
+
+4. install [terraform-provider-azurerm](https://github.com/terraform-providers/terraform-provider-azurerm)
+```
+- mkdir -p $GOPATH/src/github.com/terraform-providers
+- cd $GOPATH/src/github.com/terraform-providers/
+- sudo apt install git
+- git clone https://github.com/terraform-providers/terraform-provider-azurerm.git
+- terraform-provider-azurerm
+- make build 
+- ls $GOPATH/bin/
+```
 ##
+
 
 ## others
 1. setup ssh key

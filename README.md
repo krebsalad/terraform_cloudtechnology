@@ -11,14 +11,36 @@ cloudtechnology minor
 - mkdir -p ~/.terraform_libvirt_provider_images/
 ```
 
-2. Run a module:
+2. Run a kvm module (after having installed kvm and libvirt provider section):
 ```
 - cd test_project
-- cd to modules/<module_name>/
+- cd modules/example_ubuntu/
+- wget https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img -P ./downloads/
+- nano cloud_init.cfg
+```
+- change to desirable vals
+```
 - terraform init
 - terraform plan
 - terraform apply
+- virsh net-dhcp-leases default
+- ssh guest_user_name@ip
+- apt install git
+- git clone https://github.com/krebsalad/PiCalcPy.git
+- cd PiCalcPy
+- sudo python install_picalc_server.py
+- sudo python run.py
 ```
+- open terminal and curl <guest_ip>:8080/PiCalc/1000 or put in into the browser searchbar
+- to stop do the following
+```
+- exit
+- terraform destroy
+```
+
+3. Run docker module (after having installed docker stuff)
+
+
 ##
 #
 

@@ -44,7 +44,7 @@ In depth installation here: <TODO>
 ##
 
 ## install go
-1. install go
+1. Install go: used to build the providers
 ```
 - sudo apt update
 - sudo apt install golang
@@ -75,30 +75,37 @@ In depth installation here: <TODO>
 ```
 - Restart if you are on a virtual machine
 
-3. Install [terraform-libvirt-provider](https://github.com/dmacvicar/terraform-provider-libvirt#installing)
+3. Test libvirt
+```
+- sudo systemctl status libvirtd.service
+- virsh -c qemu:///system
+```
+
+4. Install provider [terraform-libvirt-provider](https://github.com/dmacvicar/terraform-provider-libvirt#installing)
 ```
 - sudo apt -y install git
 - sudo apt -y install libvirt-dev
 - export PATH=$PATH:/usr/lib/go/bin
 - export GOPATH=/usr/lib/go/
-- mkdir -p $GOPATH/src/github.com/dmacvicar/
+- sudomkdir -p $GOPATH/src/github.com/dmacvicar/
 - cd $GOPATH/src/github.com/dmacvicar/
 - sudo apt install git
-- git clone https://github.com/dmacvicar/terraform-provider-libvirt.git
+- sudo git clone https://github.com/dmacvicar/terraform-provider-libvirt.git
 - cd terraform-provider-libvirt
 - sudo make install
-- ls $GOPATH/bin/
+- cd $GOPATH/bin/
+- terraform-provider-libivrt -version
 ```
 
-5. test libvirt
+5. Test provider  <TODO>
 ```
-- virsh -c qemu:///system
 ```
+
 
 ##
 
 ## docker and docker provider
-1. install official docker release for ubuntu 18.04 amd64 bionic (on other machines normal 'apt install docker.io' installation should work)
+1. Install official docker release for ubuntu 18.04 amd64 bionic (on other machines normal 'apt install docker.io' installation should work)
 ```
 - sudo apt update
 - sudo apt install apt-transport-https ca-certificates curl software-properties-common
@@ -111,63 +118,67 @@ In depth installation here: <TODO>
 - sudo systemctl status docker
 ```
 
-2. setup docker permissions
+2. Setup docker permissions
 ```
 - sudo usermod -aG docker ${USER}
 - su - ${USER}
 - id -nG
 ```
+- Restart if you are on a virtual machine
 
-3. Restart if you are on a virtual machine
+3. Test docker
+```
+- sudo systemctl status docker
+- docker run hello-world
+```
 
-4. setups go path exports
+4. Install provider [terraform-provider-docker](https://github.com/terraform-providers/terraform-provider-docker#building-the-provider)
 ```
 - export PATH=$PATH:/usr/lib/go/bin
 - export GOPATH=/usr/lib/go/
-```
-
-5. install [terraform-docker-provider](https://github.com/terraform-providers/terraform-provider-docker#building-the-provider)
-```
 - mkdir -p $GOPATH/src/github.com/terraform-providers
 - cd $GOPATH/src/github.com/terraform-providers/
 - sudo apt install git
 - git clone https://github.com/terraform-providers/terraform-provider-docker.git
 - cd terraform-provider-docker
 - make build 
-- ls $GOPATH/bin/
+- cd $GOPATH/bin/
+- terraform-provider-docker -version
 ```
-- You will see terraform-provider-docker executable
 
-6. test docker
+5. Test provider <TODO>
 ```
-- docker run hello-world
 ```
+
 ##
 
 ## azure provider
-1. Setup azure stuff <TODO>
-
-2. install go
+1. Setup azure stuff
 ```
-- sudo apt install golang
 ```
 
-3. setups path exports for this shell
+2. Test Azure
 ```
-- export PATH=$PATH:/usr/lib/go/bin
-- export GOPATH=/usr/lib/go/
 ```
 
 4. install [terraform-provider-azurerm](https://github.com/terraform-providers/terraform-provider-azurerm)
 ```
+- export PATH=$PATH:/usr/lib/go/bin
+- export GOPATH=/usr/lib/go/
 - mkdir -p $GOPATH/src/github.com/terraform-providers
 - cd $GOPATH/src/github.com/terraform-providers/
 - sudo apt install git
-- git clone https://github.com/terraform-providers/terraform-provider-azurerm.git
+- sudo git clone https://github.com/terraform-providers/terraform-provider-azurerm.git
 - terraform-provider-azurerm
 - make build 
-- ls $GOPATH/bin/
+- cd $GOPATH/bin/
+- terraform-provider-azurerm -version
 ```
+
+5. Test provider <TODO>
+```
+```
+
 ##
 
 

@@ -1,13 +1,16 @@
 # terraform_cloudtechnology
 cloudtechnology minor
 
+
 ## How to use:
 
 1. Make a copy of repo:
 ```
 - git clone https://github.com/krebsalad/terraform_cloudtechnology.git
 - cp -r terraform_cloudtechnology test_project
+- mkdir -p ~/.terraform_libvirt_provider_images/
 ```
+
 2. Run a module:
 ```
 - cd test_project
@@ -29,9 +32,9 @@ In depth installation here: <TODO>
 - sudo apt install curl
 - sudo apt install unzip
 - mkdir ~/downloads
-- curl https://releases.hashicorp.com/terraform/0.12.9/terraform_0.12.9_linux_amd64.zip --output ~/downloads/terraform_0.12.9.zip
+- curl https://releases.hashicorp.com/terraform/0.12.10/terraform_0.12.10_linux_amd64.zip --output ~/downloads/terraform_0.12.10.zip
 - cd downloads
-- unzip terraform_0.12.9.zip
+- unzip terraform_0.12.10.zip
 - sudo mv terraform /opt/terraform
 - sudo ln -s /opt/terraform /usr/bin/terraform
 - terraform --version
@@ -39,6 +42,15 @@ In depth installation here: <TODO>
 - terraform init
 ```
 ##
+
+## install go
+1. install go
+```
+- sudo apt update
+- sudo apt install golang
+```
+##
+
 
 ## kvm and libivirt provider
 1. Install [qemu-kvm and dependencies](https://help.ubuntu.com/community/KVM/Installation)
@@ -51,20 +63,24 @@ In depth installation here: <TODO>
 - sudo systemctl status libvirtd
 ```
 
-2. Install [terraform-libvirt-provider](https://github.com/dmacvicar/terraform-provider-libvirt#installing)
+2. setups path exports for this shell
 ```
-- sudo apt install wget
-- sudo sh -c "echo 'deb http://download.opensuse.org/repositories/systemsmanagement:/terraform/Ubuntu_18.04/ /' > /etc/apt/sources.list.d/systemsmanagement:terraform.list"
-- wget -nv https://download.opensuse.org/repositories/systemsmanagement:terraform/Ubuntu_18.04/Release.key -O Release.key
-- sudo apt-key add - < Release.key
-- sudo apt update
-- sudo apt install terraform-provider-libvirt
-- terraform-provider-libvirt --version
-- mkdir ~/.terraform.d/plugins
-- sudo ln -s /usr/bin/terraform-provider-libvirt ~/.terraform.d/plugins/
+- export PATH=$PATH:/usr/lib/go/bin
+- export GOPATH=/usr/lib/go/
 ```
 
-3. Setup permissions for libvirt
+3. Install [terraform-libvirt-provider](https://github.com/dmacvicar/terraform-provider-libvirt#installing)
+```
+- mkdir -p $GOPATH/src/github.com/terraform-providers
+- cd $GOPATH/src/github.com/terraform-providers/
+- sudo apt install git
+- git clone https://github.com/terraform-providers/terraform-provider-libvirt.git
+- cd terraform-provider-libvirt
+- go install
+- ls $GOPATH/bin/
+```
+
+4. Setup permissions for libvirt
 ```
 - sudo usermod -a -G libvirt,kvm terraform
 - sudo nano /etc/libvirt/qemu.conf
@@ -75,20 +91,13 @@ In depth installation here: <TODO>
 - sudo systemctl restart libvirtd.service
 ```
 
-4. start libvirt and create default pool (not required as you can also make pools with terraform provider)
+5. test libvirt
 ```
-- mkdir -p ~/.terraform_libvirt_provider_images/default/
 - virsh -c qemu:///system
-- pool-destroy default
-- pool-undefine default
-- pool-define-as --name default --type dir --target /home/terraform/.terraform_libvirt_provider_images/default/
-- pool-autostart default
-- pool-build default
-- pool-start default
-- pool-list --all
-- quit
 ```
+
 5. Restart if you are on a virtual machine
+
 ##
 
 ## docker and docker provider
@@ -104,18 +113,14 @@ In depth installation here: <TODO>
 - sudo apt install docker-ce
 - sudo systemctl status docker
 ```
-2. install go
-```
-- sudo apt install golang
-```
 
-3. setups path exports for this shell
+2 setups go path exports
 ```
 - export PATH=$PATH:/usr/lib/go/bin
 - export GOPATH=/usr/lib/go/
 ```
 
-4. install [terraform-docker-provider](https://github.com/terraform-providers/terraform-provider-docker#building-the-provider)
+3 install [terraform-docker-provider](https://github.com/terraform-providers/terraform-provider-docker#building-the-provider)
 ```
 - mkdir -p $GOPATH/src/github.com/terraform-providers
 - cd $GOPATH/src/github.com/terraform-providers/

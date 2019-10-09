@@ -1,4 +1,4 @@
-## terraform_cloudtechnology
+# terraform_cloudtechnology
 cloudtechnology minor
 
 ## How to use:
@@ -17,12 +17,13 @@ cloudtechnology minor
 - terraform apply
 ```
 ##
+#
 
-## Installation
+# Installation
 Tested on ubuntu 18.04 amd64/(minimal)
 In depth installation here: <TODO>
 
-# terraform
+## terraform
 1. Install [terraform](https://www.terraform.io/downloads.html)
 ```
 - sudo apt install curl
@@ -37,9 +38,9 @@ In depth installation here: <TODO>
 - mkdir ~/terraform_project/
 - terraform init
 ```
-#
+##
 
-# kvm and libivirt provider
+## kvm and libivirt provider
 1. Install [qemu-kvm and dependencies](https://help.ubuntu.com/community/KVM/Installation)
 ```
 - sudo apt -y install qemu-kvm libvirt-bin virt-top  libguestfs-tools virtinst  bridge-utils
@@ -88,9 +89,9 @@ In depth installation here: <TODO>
 - quit
 ```
 5. Restart if you are on a virtual machine
-#
+##
 
-# docker and docker provider
+## docker and docker provider
 1. install official docker release for ubuntu 18.04 amd64 bionic (on other machines normal 'apt install docker.io' installation should work)
 ```
 - sudo apt-get update
@@ -122,13 +123,13 @@ In depth installation here: <TODO>
 - ls $GOPATH/bin/
 ```
 - You will see terraform-provider-docker executable
-#
+##
 
-# azure provider
+## azure provider
 1. install [terraform azure provider](https://github.com/terraform-providers/terraform-provider-azurerm)
-#
+##
 
-# others
+## others
 1. setup ssh key
 ```
 mkdir ~/.ssh
@@ -136,4 +137,5 @@ chmod 700 ~/.ssh
 ssh-keygen -t rsa -f ~/.ssh/id_rsa_kvm -C guest_machine
 chmod 600 ~/.ssh/id_rsa_kv*
 ```
-
+##
+#

@@ -71,8 +71,8 @@ In depth installation here: <TODO>
 
 3. Install [terraform-libvirt-provider](https://github.com/dmacvicar/terraform-provider-libvirt#installing)
 ```
-- mkdir -p $GOPATH/src/github.com/terraform-providers
-- cd $GOPATH/src/github.com/terraform-providers/
+- mkdir -p $GOPATH/src/github.com/dmacvicar/
+- cd $GOPATH/src/github.com/dmacvicar/
 - sudo apt install git
 - git clone https://github.com/dmacvicar/terraform-provider-libvirt
 - cd terraform-provider-libvirt

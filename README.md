@@ -69,7 +69,19 @@ In depth installation here: <TODO>
 - export GOPATH=/usr/lib/go/
 ```
 
-3. Install [terraform-libvirt-provider](https://github.com/dmacvicar/terraform-provider-libvirt#installing)
+3. Setup permissions for libvirt
+```
+- sudo usermod -a -G libvirt,kvm terraform
+- sudo nano /etc/libvirt/qemu.conf
+```
+- search for security_driver="selinux", uncomment it and set to "none". (in nano you can search with ctrl 
++ w). Save and exit.
+```
+- sudo systemctl restart libvirtd.service
+```
+- Restart if you are on a virtual machine
+
+4. Install [terraform-libvirt-provider](https://github.com/dmacvicar/terraform-provider-libvirt#installing)
 ```
 - mkdir -p $GOPATH/src/github.com/dmacvicar/
 - cd $GOPATH/src/github.com/dmacvicar/
@@ -80,23 +92,10 @@ In depth installation here: <TODO>
 - ls $GOPATH/bin/
 ```
 
-4. Setup permissions for libvirt
-```
-- sudo usermod -a -G libvirt,kvm terraform
-- sudo nano /etc/libvirt/qemu.conf
-```
-- search for security_driver="selinux", uncomment it and set to "none". (in nano you can search with ctrl 
-+ w). Save and exit.
-```
-- sudo systemctl restart libvirtd.service
-```
-
 5. test libvirt
 ```
 - virsh -c qemu:///system
 ```
-
-5. Restart if you are on a virtual machine
 
 ##
 
@@ -114,13 +113,22 @@ In depth installation here: <TODO>
 - sudo systemctl status docker
 ```
 
-2 setups go path exports
+2. setup docker permissions
+```
+- sudo usermod -aG docker ${USER}
+- su - ${USER}
+- id -nG
+```
+
+3. Restart if you are on a virtual machine
+
+4. setups go path exports
 ```
 - export PATH=$PATH:/usr/lib/go/bin
 - export GOPATH=/usr/lib/go/
 ```
 
-3 install [terraform-docker-provider](https://github.com/terraform-providers/terraform-provider-docker#building-the-provider)
+5. install [terraform-docker-provider](https://github.com/terraform-providers/terraform-provider-docker#building-the-provider)
 ```
 - mkdir -p $GOPATH/src/github.com/terraform-providers
 - cd $GOPATH/src/github.com/terraform-providers/
@@ -132,16 +140,7 @@ In depth installation here: <TODO>
 ```
 - You will see terraform-provider-docker executable
 
-5. setup docker permissions
-```
-- sudo usermod -aG docker ${USER}
-- su - ${USER}
-- id -nG
-```
-
-6. Restart if you are on a virtual machine
-
-7. test docker
+6. test docker
 ```
 - docker run hello-world
 ```

@@ -16,8 +16,11 @@ Requirements
 ##
 
 # How to use:
-- git clone https://github.com/krebsalad/terraform_cloudtechnology.git
-- cp -r terraform_cloudtechnology test_project
+```
+git clone https://github.com/krebsalad/terraform_cloudtechnology.git
+cp -r terraform_cloudtechnology test_project
+```
+
 - cd test_project
 - make changes in file modules/ubuntu-template or make a copy of it
 - when done, terraform init and plan.......
@@ -81,5 +84,5 @@ chmod 700 ~/.ssh
 ssh-keygen -t rsa -f ~/.ssh/id_rsa_kvm -C guest_machine
 chmod 600 ~/.ssh/id_rsa_kv*
 
-
+#
 

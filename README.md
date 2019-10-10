@@ -8,7 +8,8 @@ cloudtechnology minor
 ```
 - git clone https://github.com/krebsalad/terraform_cloudtechnology.git
 - cp -r terraform_cloudtechnology test_project
-- mkdir -p ~/.terraform_libvirt_provider_images/
+- mkdir -p /tmp/terraform_libvirt_provider_images/
+- mkdir -p ~/Downloads/
 ```
 
 2. Run a kvm module (after having installed kvm and libvirt provider section):

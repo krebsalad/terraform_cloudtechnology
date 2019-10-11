@@ -54,9 +54,9 @@ In depth installation here: <TODO>
 ```
 - sudo apt install curl
 - sudo apt install unzip
-- mkdir ~/downloads
-- curl https://releases.hashicorp.com/terraform/0.12.10/terraform_0.12.10_linux_amd64.zip --output ~/downloads/terraform_0.12.10.zip
-- cd downloads
+- mkdir ~/Downloads
+- curl https://releases.hashicorp.com/terraform/0.12.10/terraform_0.12.10_linux_amd64.zip --output ~/Downloads/terraform_0.12.10.zip
+- cd Downloads
 - unzip terraform_0.12.10.zip
 - sudo mv terraform /opt/terraform
 - sudo ln -s /opt/terraform /usr/bin/terraform

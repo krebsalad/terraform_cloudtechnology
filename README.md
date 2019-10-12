@@ -13,14 +13,15 @@ cloudtechnology minor
 - wget https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img -P ~/test_project/downloads/
 - nano cloud_init.cfg
 ```
-- change to desirable vals
+- change to desirable vals like SSH KEY
+- save the file
 ```
 - terraform init
 - terraform plan
 - terraform apply
 - virsh net-dhcp-leases default
 - ssh guest_user_name@ip
-- apt install git
+- sudo apt install git
 - git clone https://github.com/krebsalad/PiCalcPy.git
 - cd PiCalcPy
 - sudo python install_picalc.py
@@ -34,10 +35,25 @@ cloudtechnology minor
 ```
 
 3. Run loadbalancing example (after having install qemu-kvm and its dependencies and provider)
+-> this example uses a provisioners to call virsh and create a nat network (192.168.180.0/24) where the following hosts are statically set to mac adresses (heed /modules/libvirt_picalc_network/config/picalc_net_config.xml):
+    - 192.168.180.1
+    - 192.168.180.102 (load_balancer_ip)
+    - 192.168.180.103 (server 1 ip)
+    - 192.168.180.103 (server 2 ip)
+    
+Run the service with the following commands:
+```
 - mkdir -p ~/test_project/downloads/
 - get https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img -P ~/test_project/downloads/
-- cd test_project
+- cd ~/test_project
+```
+- change keys in /modules/libvirt_dual_picalc_server/config/user_data.cfg
+- change key in /module/libvirt_load_balancing/config/user_data.cfg
+```
 - terraform init
+- terraform apply
+```
+- open a terminal and curl <loadbalancer>:8080/PiCalc/1000
 
 4. Run docker module (after having installed docker stuff)
 

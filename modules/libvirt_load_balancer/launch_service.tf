@@ -10,7 +10,7 @@ module "ubuntu-18-load-balancer" {
   domain_name = "ubuntu-loadbalancer"
   image_name = "ubuntu-18-lb-amd64.qcow2"
   common_name = "ubuntu-18-lb"
-  # image_source = "https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.img"
+  # image_source = "https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img"
   image_source = "${path.module}/../../downloads/bionic-server-cloudimg-amd64.img"
   user_data_source = "${path.module}/config/user_data.cfg"
   network_config_source = "${path.module}/config/network_config.cfg"

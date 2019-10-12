@@ -53,7 +53,7 @@ Run the service with the following commands:
 - terraform init
 - terraform apply
 ```
-- open a terminal and curl <loadbalancer>:8080/PiCalc/1000
+- open a terminal and curl < loadbalancer_ip >:8080/PiCalc/1000
 
 4. Run docker module (after having installed docker stuff)
 

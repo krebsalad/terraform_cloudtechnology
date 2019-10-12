@@ -4,16 +4,12 @@ cloudtechnology minor
 
 ## How to use:
 
-1. Make a copy of repo:
+1. Run a kvm example module (after having installed kvm and libvirt provider section):
 ```
 - git clone https://github.com/krebsalad/terraform_cloudtechnology.git
-- cp -r terraform_cloudtechnology test_project
-```
-
-2. Run a kvm example module (after having installed kvm and libvirt provider section):
-```
-- cd test_project
-- cd modules/example_ubuntu/
+- mkdir -p ~/test_project/downloads
+- cd ~/test_project
+- cp ~/terraform_cloudtechnology/modules/example_ubuntu/* ./
 - wget https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img -P ~/test_project/downloads/
 - nano cloud_init.cfg
 ```

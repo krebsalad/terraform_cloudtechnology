@@ -100,7 +100,6 @@ resource "libvirt_domain" "virt-domain" {
 
   network_interface {
     network_name = "${var.network_name}"
-    addresses = ["${var.ip_addr}"]
   }
 
   console {

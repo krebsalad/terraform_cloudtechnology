@@ -15,7 +15,6 @@ module "ubuntu-18-server-1" {
   network_config_source = "${path.module}/config/network_config_1.cfg"
   domain_memory = 512
   network_name = "picalc_net"
-  ip_addr = "192.168.180.103"
 }
 
 module "ubuntu-18-server-2" {
@@ -34,6 +33,5 @@ module "ubuntu-18-server-2" {
   network_config_source = "${path.module}/config/network_config_2.cfg"
   domain_memory = 512
   network_name = "picalc_net"
-  ip_addr = "192.168.180.104"
 }
 

@@ -6,7 +6,7 @@ provider "libvirt" {
 # let terraform follow lifecycle of network
 resource "null_resource" "picalc_network" {
    provisioner "local-exec" {
-      command = "virsh net-define ./picalc_net.xml && virsh net-autostart picalc_net &&virsh net-start picalc_net"
+      command = "virsh net-define ./config/picalc_net_config.xml && virsh net-autostart picalc_net &&virsh net-start picalc_net"
       interpreter = ["/bin/bash", "-c"]
    }
    provisioner "local-exec" {

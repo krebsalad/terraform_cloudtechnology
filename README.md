@@ -10,11 +10,11 @@ cloudtechnology minor
 - cp -r terraform_cloudtechnology test_project
 ```
 
-2. Run a kvm module (after having installed kvm and libvirt provider section):
+2. Run a kvm example module (after having installed kvm and libvirt provider section):
 ```
 - cd test_project
 - cd modules/example_ubuntu/
-- wget https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img -P ./downloads/
+- wget https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img -P ~/test_project/downloads/
 - nano cloud_init.cfg
 ```
 - change to desirable vals
@@ -27,8 +27,8 @@ cloudtechnology minor
 - apt install git
 - git clone https://github.com/krebsalad/PiCalcPy.git
 - cd PiCalcPy
-- sudo python install_picalc_server.py
-- sudo python run.py
+- sudo python install_picalc.py
+- sudo python run.py mode=server
 ```
 - open terminal and curl <guest_ip>:8080/PiCalc/1000 or put in into the browser searchbar
 - to stop do the following
@@ -37,10 +37,11 @@ cloudtechnology minor
 - terraform destroy
 ```
 
-3. Run loadbalancing example
+3. Run loadbalancing example (after having install qemu-kvm and its dependencies and provider)
 - mkdir -p ~/test_project/downloads/
-- add in main.tf two new modules. The dual picalc servers and loadbalancing module. Look in main.tf on how to use module.
-- make changes in user data of modules to ensure static ips which are required in the loadbalancer user_data config file. Alternatively, launch the servers first then get the ip's with virsh net-dhcp-leases default and set the ips in the use_data config of the loadbalance.
+- get https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img -P ~/test_project/downloads/
+- cd test_project
+- terraform init
 
 4. Run docker module (after having installed docker stuff)
 

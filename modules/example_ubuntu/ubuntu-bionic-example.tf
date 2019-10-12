@@ -7,7 +7,7 @@ provider "libvirt" {
 resource "libvirt_pool" "ubuntu" {
   name = "ubuntu-pool"
   type = "dir"
-  path = "${path.module}/images/"
+  path = "/tmp/terraform-provider-ubuntu-pool-images/"
 }
 
 # create image

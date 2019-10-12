@@ -1,0 +1,20 @@
+<network>
+  <name>picalc_net</name>
+  <forward mode='nat'>
+    <nat>
+      <port start='1024' end='65535'/>
+    </nat>
+  </forward>
+  <bridge name='virbr1' stp='on' delay='0'/>
+  <mac address='00:50:56:11:11:11'/>
+  <dns enable='yes'/>
+  <ip address='192.168.180.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.180.2' end='192.168.180.254'/>
+      <host mac='00:50:56:22:22:22' ip='192.168.180.102'/>
+      <host mac='00:50:56:33:33:33' ip='192.168.180.103'/>
+      <host mac='00:50:56:44:44:44' ip='192.168.180.104'/>
+    </dhcp>
+  </ip>
+</network>
+

@@ -14,7 +14,7 @@ resource "libvirt_pool" "ubuntu" {
 resource "libvirt_volume" "image-qcow2" {
  name = "ubuntu-amd64.qcow2"
  pool = libvirt_pool.ubuntu.name
- source ="${path.module}/downloads/bionic-server-cloudimg-amd64.img"
+ source ="${path.module}/../../downloads/bionic-server-cloudimg-amd64.img"
  format = "qcow2"
 }
 

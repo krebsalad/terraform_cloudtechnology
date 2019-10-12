@@ -48,6 +48,15 @@ variable "domain_memory"{
   type = "string"
 }
 
+variable "network_name"{
+  description = "name of virtual network"
+  type = "string"
+}
+
+variable "ip_addr"{
+   description = "ip for the domain in this network"
+   type = "string"
+}
 
 # load data
 data "template_file" "user_data" {
@@ -90,7 +99,8 @@ resource "libvirt_domain" "virt-domain" {
   cloudinit = "${libvirt_cloudinit_disk.commoninit.id}"
 
   network_interface {
-    network_name = "default"
+    network_name = "${var.network_name}"
+    addresses = ["${var.ip_addr}"]
   }
 
   console {

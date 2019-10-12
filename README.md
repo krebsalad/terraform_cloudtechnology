@@ -43,12 +43,14 @@ cloudtechnology minor
     
 Run the service with the following commands:
 ```
+- git clone https://github.com/krebsalad/terraform_cloudtechnology/edit/master/README.md
 - mkdir -p ~/test_project/downloads/
 - get https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img -P ~/test_project/downloads/
 - cd ~/test_project
+- cp -r ~/terraform_cloudtechnology/* ./
 ```
-- change keys in /modules/libvirt_dual_picalc_server/config/user_data.cfg
-- change key in /module/libvirt_load_balancing/config/user_data.cfg
+- change ssh key in ./modules/libvirt_dual_picalc_server/config/user_data.cfg
+- change ssh key in ./module/libvirt_load_balancing/config/user_data.cfg
 ```
 - terraform init
 - terraform apply

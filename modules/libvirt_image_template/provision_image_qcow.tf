@@ -53,11 +53,6 @@ variable "network_name"{
   type = "string"
 }
 
-variable "ip_addr"{
-   description = "ip for the domain in this network"
-   type = "string"
-}
-
 # load data
 data "template_file" "user_data" {
   template = file("${var.user_data_source}")

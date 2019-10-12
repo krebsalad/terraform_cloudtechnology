@@ -8,8 +8,6 @@ cloudtechnology minor
 ```
 - git clone https://github.com/krebsalad/terraform_cloudtechnology.git
 - cp -r terraform_cloudtechnology test_project
-- mkdir -p /tmp/terraform_libvirt_provider_images/
-- mkdir -p ~/Downloads/
 ```
 
 2. Run a kvm module (after having installed kvm and libvirt provider section):
@@ -39,7 +37,12 @@ cloudtechnology minor
 - terraform destroy
 ```
 
-3. Run docker module (after having installed docker stuff)
+3. Run loadbalancing example
+- mkdir -p ~/test_project/downloads/
+- add in main.tf two new modules. The dual picalc servers and loadbalancing module. Look in main.tf on how to use module.
+- make changes in user data of modules to ensure static ips which are required in the loadbalancer user_data config file. Alternatively, launch the servers first then get the ip's with virsh net-dhcp-leases default and set the ips in the use_data config of the loadbalance.
+
+4. Run docker module (after having installed docker stuff)
 
 
 ##

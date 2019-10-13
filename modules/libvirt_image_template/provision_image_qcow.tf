@@ -53,6 +53,16 @@ variable "network_name"{
   type = "string"
 }
 
+variable "hostname"{
+  description = "host name"
+  type = "string"
+}
+
+variable "macaddress"{
+  description = "machine address"
+  type = "string"
+}
+
 # load data
 data "template_file" "user_data" {
   template = file("${var.user_data_source}")
@@ -87,7 +97,7 @@ resource "libvirt_cloudinit_disk" "commoninit" {
 
 # Define KVM domain to create
 resource "libvirt_domain" "virt-domain" {
-  name   = "${var.domain_name}-${var.domain_memory}mb-1vcpu"
+  name   = "${hostname}"
   memory = "${var.domain_memory}"
   vcpu   = 1
 
@@ -95,6 +105,8 @@ resource "libvirt_domain" "virt-domain" {
 
   network_interface {
     network_name = "${var.network_name}"
+    mac = "${var.macaddress}"
+    hostname = "${var.hostname}"
   }
 
   console {

@@ -16,4 +16,6 @@ module "ubuntu-18-load-balancer" {
   network_config_source = "${path.module}/config/network_config.cfg"
   domain_memory = 512
   network_name = "picalc_net"
+  hostname = "picalc_lb"
+  macaddress = ""
 }

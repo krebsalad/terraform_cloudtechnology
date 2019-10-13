@@ -35,7 +35,7 @@ module "ubuntu-18-server-2" {
   network_config_source = "${path.module}/config/network_config_2.cfg"
   domain_memory = 512
   network_name = "picalc_net"
-  host_name = "picalc_server_4"
+  hostname = "picalc_server_4"
   macaddress = "52:54:00:6c:3c:04"
   }
 

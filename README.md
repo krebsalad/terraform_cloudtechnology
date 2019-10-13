@@ -57,8 +57,7 @@ Run the service with the following commands:
 ```
 - open a terminal and curl < loadbalancer_ip >:8080/PiCalc/1000
 
-4. Run docker module (after having installed docker stuff)
-
+4. run docker module <TODO>
 
 ##
 #
@@ -148,7 +147,7 @@ In depth installation here: <TODO>
 
 ##
 
-## docker and docker provider
+## docker and docker provider <>
 1. Install official docker release for ubuntu 18.04 amd64 bionic (on other machines normal 'apt install docker.io' installation should work)
 ```
 - sudo apt update

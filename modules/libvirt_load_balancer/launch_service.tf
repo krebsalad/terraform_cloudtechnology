@@ -17,5 +17,5 @@ module "ubuntu-18-load-balancer" {
   domain_memory = 512
   network_name = "picalc_net"
   hostname = "picalc_lb"
-  macaddress = ""
+  macaddress = "52:54:00:6c:3c:02"
 }

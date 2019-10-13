@@ -97,7 +97,7 @@ resource "libvirt_cloudinit_disk" "commoninit" {
 
 # Define KVM domain to create
 resource "libvirt_domain" "virt-domain" {
-  name   = "${hostname}"
+  name   = "${var.hostname}"
   memory = "${var.domain_memory}"
   vcpu   = 1
 

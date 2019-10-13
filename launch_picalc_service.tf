@@ -3,7 +3,7 @@ module "picalc_network_module" {
   source = "./modules/libvirt_picalc_network/"
 }
 
-launch picalc servers
+# launch picalc servers
 module "picalc_service_module" {
   source = "./modules/libvirt_dual_picalc_server/"
 }

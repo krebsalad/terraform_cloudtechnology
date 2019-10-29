@@ -1,7 +1,6 @@
 # terraform_cloudtechnology
 cloudtechnology minor
 
-
 ## How to use:
 
 1. Run a kvm example module (after having installed kvm and libvirt provider section):
